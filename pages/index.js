@@ -6,9 +6,10 @@ import Darkmode from "../components/darkmode";
 import PriceCard from "../components/PriceCard";
 
 export async function getServerSideProps(context) {
-  const host = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_VERCEL_URL : "http://localhost:3000";
-  console.log(host);
-  const res = await fetch(host+"/api/Coindata");
+  // const {req } = context;
+  // const baseUrl = req ? `${req.protocol}://` : '';
+  // console.log(baseUrl);
+  const res = await fetch(process.env.VERCEL_URL+"/api/Coindata");
   const data = await res.json();
 
   if (!data) {
