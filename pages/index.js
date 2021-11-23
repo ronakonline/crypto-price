@@ -6,7 +6,9 @@ import Darkmode from "../components/darkmode";
 import PriceCard from "../components/PriceCard";
 
 export async function getServerSideProps(context) {
-  const res = await fetch("http://localhost:3000/api/Coindata");
+  const host = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_VERCEL_URL : "http://localhost:3000";
+  console.log(host);
+  const res = await fetch(host+"/api/Coindata");
   const data = await res.json();
 
   if (!data) {
@@ -24,9 +26,11 @@ export default function Home({ data }) {
   const [coins, setCoins] = useState(data);
   const [search, setSearch] = useState("");
 
-  const filteredCoins = coins.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase()));
+  const filteredCoins = coins.filter((coin) =>
+    coin.name.toLowerCase().includes(search.toLowerCase())
+  );
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     e.preventDefault();
     setSearch(e.target.value.toLowerCase());
   };
@@ -41,7 +45,6 @@ export default function Home({ data }) {
 
   return (
     <>
-    
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
