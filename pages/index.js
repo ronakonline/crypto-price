@@ -9,6 +9,7 @@ export async function getServerSideProps(context) {
   // const {req } = context;
   // const baseUrl = req ? `${req.protocol}://` : '';
   // console.log(baseUrl);
+  console.log(NEXT_PUBLIC_VERCEL_URL);
   const res = await fetch(process.env.VERCEL_URL+"/api/Coindata");
   const data = await res.json();
 
