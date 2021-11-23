@@ -6,11 +6,8 @@ import Darkmode from "../components/darkmode";
 import PriceCard from "../components/PriceCard";
 
 export async function getServerSideProps(context) {
-  // const {req } = context;
-  // const baseUrl = req ? `${req.protocol}://` : '';
-  // console.log(baseUrl);
-  console.log(NEXT_PUBLIC_VERCEL_URL);
-  const res = await fetch(process.env.VERCEL_URL+"/api/Coindata");
+  const host = process.env.NODE_ENV === "production" ? "https://crypto-price-seven.vercel.app/" : "http://localhost:3000";
+  const res = await fetch(host+"/api/Coindata");
   const data = await res.json();
 
   if (!data) {
