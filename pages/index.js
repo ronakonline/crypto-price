@@ -9,7 +9,6 @@ export async function getServerSideProps(context) {
   const host = process.env.NODE_ENV === "production" ? "https://crypto-price-seven.vercel.app/" : "http://localhost:3000";
   const res = await fetch(host+"/api/Coindata");
   const data = await res.json();
-
   if (!data) {
     return {
       notFound: true

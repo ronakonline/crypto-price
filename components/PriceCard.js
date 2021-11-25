@@ -12,11 +12,11 @@ export default function PriceCard({data}) {
                 <Divider />
                 <Flex justify="space-between">
                 <Text fontSize="lg" fontWeight="semibold" m={2}>
-                    ${data.price_usd}
+                    Rs {data.quote.INR.price}
                 </Text>
                 <Text fontSize="lg" m={2}>
-                    {data.percent_change_24h > 0 ? <ArrowUpIcon color="green.500" /> : <ArrowDownIcon color="red.500" />}
-                    {data.percent_change_24h}%
+                    {data.quote.INR.percent_change_1h > 0 ? <ArrowUpIcon color="green.500" /> : <ArrowDownIcon color="red.500" />}
+                    {data.quote.INR.percent_change_1h}%
                 </Text>
                 </Flex>
             </Box>

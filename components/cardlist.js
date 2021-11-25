@@ -15,15 +15,15 @@ export default function CardList({ data }) {
           <Divider />
           <Flex justify="space-between">
             <Text fontSize="lg" fontWeight="semibold" m={2}>
-              ${item.price_usd}
+              Rs {item.quote.INR.price}
             </Text>
             <Text fontSize="lg" m={2}>
-              {item.percent_change_24h > 0 ? (
+              {item.quote.INR.percent_change_1h > 0 ? (
                 <ArrowUpIcon color="green.500" />
               ) : (
                 <ArrowDownIcon color="red.500" />
               )}
-              {item.percent_change_24h}%
+              {item.quote.INR.percent_change_1h}%
             </Text>
           </Flex>
         </Box>
